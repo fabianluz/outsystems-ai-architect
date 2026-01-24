@@ -25,11 +25,6 @@ This tool acts as an **AI Assistant for OutSystems Architects**. It translates b
 <img width="3276" height="1566" alt="image" src="https://github.com/user-attachments/assets/2fedec65-9715-4f07-80d8-1c2899bb4c8b" />
 
 
-
-## 📸 Screenshots
-![App Screenshot](https://via.placeholder.com/800x400?text=Upload+Your+Screenshot+Here)
-*(Note: Replace the link above with the actual URL of your screenshot after uploading it to the repo)*
-
 ## 🚀 How to Run Locally
 
 ### 1. Clone the Repo
