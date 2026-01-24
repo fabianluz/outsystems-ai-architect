@@ -29,8 +29,7 @@ This tool acts as an **AI Assistant for OutSystems Architects**. It translates b
 
 ### 1. Clone the Repo
 ```bash
-git clone [https://github.com/YOUR_USERNAME/outsystems-ai-architect.git](https://github.com/YOUR_USERNAME/outsystems-ai-architect.git)
-cd outsystems-ai-architect
+git clone https://github.com/fabianluz/outsystems-ai-architect/
 
 ```
 
