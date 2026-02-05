@@ -1,6 +1,3 @@
-Here is a detailed `README.md` tailored to the code provided.
-
----
 
 # 🚀 OutSystems AI Architect
 
