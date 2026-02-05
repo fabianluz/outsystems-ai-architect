@@ -1,5 +1,5 @@
 
-# 🚀 OutSystems AI Architect
+# 🚀 OutSystems AI Architecht Helper
 
 **OutSystems AI Architect** is a generative AI tool designed to accelerate the "Day 0" architecture phase of OutSystems applications. It converts natural language descriptions of app ideas into technical deliverables: a **Data Model Blueprint** and valid **SQL Server (T-SQL) scripts**.
 
