@@ -1,141 +1,115 @@
-
-
-# 🤖 OutSystems AI Butler
-
-**The local-first "Digital Twin" for AI-Assisted OutSystems Development.**
-
-## 💡 The Problem
-
-When using LLMs (ChatGPT, Claude) for OutSystems development, developers face two main issues:
-
-1. **Hallucinations:** The AI guesses entity names or attributes that don't exist in your actual project.
-2. **Context Friction:** Manually typing out your database schema and logic flow for the AI is tedious and error-prone.
-
-## 🛠 The Solution
-
-**OutSystems AI Butler** solves this by maintaining a structured, visual mirror of your O11 or ODC modules locally.
-
-It allows you to:
-
-1. **Import & Visualize:** Paste XML directly from Service Studio to see Entity Diagrams and Logic Flows.
-2. **Visually Design:** Use a drag-and-drop **Visual IDE** to design logic, SQL queries, and JavaScript nodes.
-3. **Generate Perfect Context:** Click one button to generate a hallucination-free JSON prompt for your AI.
-4. **Round-Trip Engineering:** Export your designs back to **XML** to paste them directly into Service Studio.
-
-<img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/2e5e9de8-c7c2-43a5-a238-a5360c934059" />
-<img width="2468" height="1320" alt="image" src="https://github.com/user-attachments/assets/8ae480f7-62de-4aaa-9603-aa409dc0eec9" />
-
-
+Here is a detailed `README.md` tailored to the code provided.
 
 ---
 
-## 🌟 New Features
+# 🚀 OutSystems AI Architect
 
-### 1. 🎨 Visual Action Editor (IDE)
+**OutSystems AI Architect** is a generative AI tool designed to accelerate the "Day 0" architecture phase of OutSystems applications. It converts natural language descriptions of app ideas into technical deliverables: a **Data Model Blueprint** and valid **SQL Server (T-SQL) scripts**.
 
-A fully interactive flow designer that mimics Service Studio.
+This tool leverages **OpenAI's GPT-4 Turbo** to act as an expert OutSystems Data Architect, ensuring the output aligns with platform best practices.
 
-* **Drag & Drop:** Drag nodes (If, Assign, Loop, SQL, etc.) from the toolbox directly onto the canvas.
-* **Service Studio Styling:** Nodes look and feel like the real thing (Green Start, Red End, Blue Loops).
-* **Smart Connectors:** Orthogonal "Step" lines that automatically route between nodes.
-* **Property Inspector:** Edit SQL queries, JavaScript code, Assignments, and Conditional logic in a dedicated panel.
+## ✨ Features
 
-### 2. 💾 XML Export & Round-Tripping
+* **Natural Language to Architecture:** Simply describe your app (e.g., *"A library system where users borrow books..."*), and the AI generates the necessary data structure.
+* **Visual Blueprint:** Automatically renders a masonry-style visualization of your Entities and Attributes using Streamlit.
+* **SQL Generation:** Produces ready-to-execute T-SQL `CREATE TABLE` scripts, including Primary Keys, Foreign Keys, and appropriate data types.
+* **Dual-Interface Architecture:** Built with a clean separation between the logic (FastAPI backend) and the presentation (Streamlit frontend).
 
-You are no longer stuck in the app.
+## 🛠️ Tech Stack
 
-* **Export XML:** Download your defined Entities and Actions as a `.xml` file.
-* **Service Studio Compatible:** The exported XML is formatted specifically for the OutSystems Clipboard. You can open the XML file, copy the content, and **paste it directly into Service Studio**.
+* **Frontend:** [Streamlit](https://streamlit.io/) – For the interactive web interface.
+* **Backend:** [FastAPI](https://fastapi.tiangolo.com/) – For the REST API handling AI logic.
+* **AI Engine:** [OpenAI API](https://openai.com/) (GPT-4 Turbo) – For schema generation.
+* **Language:** Python 3.10+
 
-### 3. 🤖 Prompt Library & AI Guidance
+## 📋 Prerequisites
 
-* **Suggested Prompts:** A built-in library of "System Prompts" engineered to get the best results from ChatGPT/Claude.
-* **Context Export:** The "Copy for AI" button generates a token-optimized JSON representation of your module, ensuring the AI knows exactly which Tables and Variables exist.
+Before running the project, ensure you have:
 
-### 4. 📦 Advanced Node Support
+1. **Python 3.x** installed.
+2. An **OpenAI API Key**. You can obtain one [here](https://platform.openai.com/).
 
-Full support for advanced logic patterns:
+## ⚙️ Installation
 
-* **Server Side:** `SQL` (with query editor), `Execute Server Action`, `Aggregate`.
-* **Client Side:** `JavaScript` (with code editor), `Message`, `Destination`.
-* **Logic:** `ForEach` Loops, `Switch` blocks, `Exceptions`.
-
----
-
-## 🏗 Architecture
-
-* **Frontend:** React 18 + TypeScript + Vite.
-* **Visualization:** React Flow (Diagrams) + Dagre (Auto-layout).
-* **Database:** Dexie.js (IndexedDB wrapper) - **100% Local Storage**.
-* **Parsing:** fast-xml-parser for clipboard compatibility.
-
----
-
-## 🚀 How to Run Locally
-
-### 1. Clone the Repo
-
+1. **Clone the repository:**
 ```bash
-git clone https://github.com/fabianluz/outsystems-ai-butler.git
-cd outsystems-ai-butler
+git clone https://github.com/fabianluz/outsystems-ai-architect.git
+cd outsystems-ai-architect
 
 ```
 
-### 2. Install Dependencies
 
-Ensure you have Node.js (v18+) installed.
-
+2. **Install dependencies:**
+It is recommended to use a virtual environment.
 ```bash
-npm install
+pip install -r requirements.txt
 
 ```
 
-### 3. Run the Application
 
+
+## 🚀 Usage
+
+The application requires two separate processes to run: the Backend API and the Frontend UI.
+
+### Step 1: Start the Backend (FastAPI)
+
+The backend handles the connection to OpenAI and processes the prompt engineering.
+
+1. Open a terminal and run:
 ```bash
-npm run dev
+python main.py
 
 ```
 
-Open your browser to `http://localhost:5173`.
+
+2. **First Run Configuration:** If you haven't configured your API key, the script will interactively ask for it and save it to a `.env` file automatically.
+3. The server will start at `http://localhost:8000`.
+
+### Step 2: Start the Frontend (Streamlit)
+
+The frontend provides the visual interface to interact with the architect.
+
+1. Open a **new** terminal window (keep the backend running).
+2. Run the Streamlit app:
+```bash
+streamlit run gui.py
+
+```
+
+
+3. The interface will open in your default browser (usually at `http://localhost:8501`).
+
+## 💡 How to Use
+
+1. **Enter Description:** In the web interface, type a description of the application you want to build.
+* *Example:* "A Fleet Management system where Drivers are assigned to Vehicles. Vehicles need to track Mileage, License Plate, and Last Maintenance Date."
+
+
+2. **Generate:** Click the **"Generate Blueprint"** button.
+3. **View Results:**
+* **🏗️ Blueprint Visualizer:** Explore the entities and their attributes in a card layout.
+* **💾 SQL Script:** Copy the generated T-SQL code to use in SQL Server or OutSystems.
+* **📄 Raw JSON:** View the structured data response from the API.
+
+
+
+## 📂 Project Structure
+
+* **`main.py`**: The entry point for the backend. Contains the FastAPI app, OpenAI system prompts (`SYSTEM_PROMPT`), and API key management logic.
+* **`gui.py`**: The Streamlit application. Handles user input, API requests to the backend, and rendering the results.
+* **`requirements.txt`**: List of Python libraries required to run the project.
+* **`.env`**: (Auto-generated) Stores your OpenAI API key locally.
+
+## ⚠️ Notes
+
+* **Model Cost:** This tool uses `gpt-4-turbo`. Ensure you have sufficient credits in your OpenAI account.
+* **Privacy:** Your API key is stored locally in the `.env` file and is not shared.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements.
 
 ---
 
-## 📖 User Guide
-
-### Phase 1: Import / Define
-
-* **Option A (Manual):** Create a Project -> Module -> Add Entities/Actions manually.
-* **Option B (From Service Studio):** Select your Entities/Actions in Service Studio, press `Ctrl+C`. In Butler, click **"📋 Import"** and paste the XML.
-* **Option C (From AI):** Ask ChatGPT to "Generate OutSystems XML for a generic Customer entity". Paste the result into Butler.
-
-### Phase 2: Refine & Design
-
-* Go to an Action and click **"Edit"**.
-* Drag **SQL nodes** to write complex queries.
-* Drag **JavaScript nodes** to prototype client logic.
-* Connect nodes to define the execution flow.
-
-### Phase 3: Export to AI
-
-* Click **"✨ Copy for AI"**.
-* Paste into ChatGPT: *"Here is my current logic flow. Optimize the SQL query in the node named 'GetUserData'."*
-
-### Phase 4: Export to OutSystems
-
-* Click **"💾 Export XML"**.
-* Open the downloaded file, copy the text.
-* Paste directly into the **Logic Tab** or **Data Tab** of Service Studio.
-
----
-
-## 🔮 Future Roadmap
-
-* [ ] **Direct Clipboard Access:** Paste directly without the modal (requires browser permissions).
-* [ ] **OML Parsing:** Upload binary `.oml` files to extract context automatically.
-* [ ] **AI Agent Integration:** Connect directly to OpenAI API to generate nodes inside the Flow Editor. (50%, currently in testing)
-
-## 📄 License
-
-Distributed under the MIT License.
-
+*Created by Fabian Luz*
